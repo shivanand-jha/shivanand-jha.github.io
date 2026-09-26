@@ -1,408 +1,626 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shivanand Jha - Full Stack Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shivanand Kumar Jha — Agentic AI Engineer building production AI applications with React, Node.js, TypeScript, OpenAI, Claude and agentic workflows.">
+<title>Shivanand Kumar Jha — Agentic AI Engineer</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+<style>
+:root{
+  --bg:#050608;
+  --bg-2:#080a0f;
+  --panel:rgba(16,18,25,.70);
+  --panel-strong:#11141c;
+  --text:#f7f7f8;
+  --muted:#9299a8;
+  --muted-2:#656d7e;
+  --line:rgba(255,255,255,.085);
+  --line-strong:rgba(255,255,255,.16);
+  --violet:#8b5cf6;
+  --violet-2:#c084fc;
+  --cyan:#22d3ee;
+  --green:#4ade80;
+  --max:1200px;
+  --radius:24px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Manrope",sans-serif;color:var(--text);background:
+  radial-gradient(circle at 8% 7%,rgba(139,92,246,.15),transparent 25%),
+  radial-gradient(circle at 91% 12%,rgba(34,211,238,.09),transparent 24%),
+  radial-gradient(circle at 50% 82%,rgba(139,92,246,.06),transparent 28%),
+  linear-gradient(180deg,var(--bg) 0%,#080a0e 45%,var(--bg) 100%);
+  min-height:100vh;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,#000,transparent 92%);
+}
+body:after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle 500px at var(--mx,50%) var(--my,10%),rgba(139,92,246,.065),transparent 68%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(calc(100% - 40px),var(--max));margin-inline:auto}
 
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+/* Top chrome */
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--violet),var(--cyan));z-index:1000}
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,6,8,.67);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:11px;font-size:15px;font-weight:800;letter-spacing:-.03em}
+.logo-mark{
+  width:35px;height:35px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--violet),var(--cyan));font-size:11px;
+  box-shadow:0 12px 30px rgba(139,92,246,.23)
+}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{color:var(--muted);font-size:12px;transition:.25s}
+nav ul a:hover{color:#fff}
+.nav-status{
+  display:flex;align-items:center;gap:8px;font:500 10px "DM Mono",monospace;
+  color:#8e96a8;text-transform:uppercase;letter-spacing:.09em;
+}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+@media(max-width:720px){nav ul{display:none}.nav-status{display:none}}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* Hero */
+.hero{padding:98px 0 86px}
+.hero-grid{display:grid;grid-template-columns:1.32fr .68fr;gap:62px;align-items:end}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 11px;
+  border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.028);
+  font:500 10px "DM Mono",monospace;letter-spacing:.1em;color:#a8afbf;text-transform:uppercase
+}
+.hero h1{
+  margin-top:25px;font-size:clamp(54px,7.8vw,104px);line-height:.9;
+  letter-spacing:-.082em;max-width:980px;
+}
+.hero h1 .gradient{
+  background:linear-gradient(102deg,#fff 10%,#d8c8ff 50%,#8debf7 95%);
+  color:transparent;-webkit-background-clip:text;background-clip:text
+}
+.hero-copy{max-width:730px;margin-top:28px;font-size:16px;line-height:1.85;color:var(--muted)}
+.hero-copy strong{color:#e5e7eb;font-weight:700}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  padding:13px 17px;border-radius:13px;border:1px solid var(--line);
+  display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;
+  transition:.3s ease
+}
+.btn-primary{background:#f5f5f7;color:#08090c;border-color:#f5f5f7}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(255,255,255,.11)}
+.btn-secondary{background:rgba(255,255,255,.028);color:#e9ebef}
+.btn-secondary:hover{transform:translateY(-3px);border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.08)}
+.hero-card{
+  position:relative;overflow:hidden;padding:27px;border-radius:26px;
+  border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.016));
+  box-shadow:0 35px 90px rgba(0,0,0,.32)
+}
+.hero-card:before{
+  content:"";position:absolute;width:220px;height:220px;right:-135px;top:-130px;border-radius:50%;
+  background:rgba(139,92,246,.24);filter:blur(24px)
+}
+.hero-card:after{
+  content:"";position:absolute;width:170px;height:170px;left:-120px;bottom:-110px;border-radius:50%;
+  background:rgba(34,211,238,.11);filter:blur(28px)
+}
+.mono{font:500 10px "DM Mono",monospace;color:var(--muted-2);text-transform:uppercase;letter-spacing:.13em}
+.card-title{font-size:35px;font-weight:800;letter-spacing:-.06em;margin-top:9px}
+.card-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:25px}
+.metric{
+  padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(0,0,0,.15)
+}
+.metric strong{display:block;font-size:21px;letter-spacing:-.04em}
+.metric span{display:block;margin-top:4px;font-size:10px;color:var(--muted);line-height:1.35}
+.location{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);font-size:11px;color:#7d8596}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-        }
+/* Shared section */
+.section{padding:96px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:34px}
+.kicker{font:500 10px "DM Mono",monospace;color:#7e8799;letter-spacing:.15em;text-transform:uppercase}
+.section h2{font-size:clamp(35px,4vw,55px);line-height:.98;letter-spacing:-.065em;margin-top:10px}
+.section-intro{max-width:440px;font-size:13px;line-height:1.8;color:var(--muted)}
+@media(max-width:780px){.section-head{display:block}.section-intro{margin-top:16px}.hero-grid{grid-template-columns:1fr}.hero-card{max-width:560px}}
 
-        nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+/* Capability strip */
+.capabilities{
+  display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+}
+.capability{padding:24px 20px;border-right:1px solid var(--line)}
+.capability:last-child{border-right:0}
+.capability .index{font:500 9px "DM Mono",monospace;color:var(--muted-2)}
+.capability h3{margin-top:14px;font-size:14px;letter-spacing:-.02em}
+.capability p{margin-top:8px;font-size:11px;line-height:1.65;color:var(--muted)}
+@media(max-width:760px){.capabilities{grid-template-columns:1fr 1fr}.capability:nth-child(2){border-right:0}.capability:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:460px){.capabilities{grid-template-columns:1fr}.capability{border-right:0;border-bottom:1px solid var(--line)}.capability:last-child{border-bottom:0}}
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s;
-        }
+/* Experience */
+.timeline{position:relative}
+.timeline:before{
+  content:"";position:absolute;left:84px;top:0;bottom:0;width:1px;background:linear-gradient(var(--line-strong),var(--line),transparent)
+}
+.job{display:grid;grid-template-columns:84px 1fr;gap:34px;padding-bottom:42px;position:relative}
+.job:last-child{padding-bottom:0}
+.job-index{font:500 10px "DM Mono",monospace;color:var(--muted-2);padding-top:7px}
+.job-dot{
+  position:absolute;left:79px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:#11141a;border:2px solid #7162a8;box-shadow:0 0 0 5px rgba(139,92,246,.05)
+}
+.job-card{
+  padding:26px;border:1px solid var(--line);border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.014))
+}
+.job-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.job-title{font-size:18px;font-weight:800;letter-spacing:-.035em}
+.job-company{font-size:12px;color:#a9b0bf;margin-top:5px}
+.job-date{font:500 10px "DM Mono",monospace;color:#777f90;white-space:nowrap}
+.job-subrole{display:inline-flex;margin-top:20px;padding:6px 9px;border-radius:999px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.18);font:500 10px "DM Mono",monospace;color:#bdaefc}
+.job-card ul{list-style:none;margin-top:18px;display:grid;gap:11px}
+.job-card li{position:relative;padding-left:17px;color:var(--muted);font-size:12px;line-height:1.75}
+.job-card li:before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--cyan))}
 
-        nav a:hover {
-            color: #667eea;
-        }
+/* Work cards */
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.project{
+  min-height:420px;padding:27px;border:1px solid var(--line);border-radius:25px;
+  background:linear-gradient(150deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  display:flex;flex-direction:column;position:relative;overflow:hidden;transition:.35s ease
+}
+.project:before{
+  content:"";position:absolute;width:260px;height:260px;right:-180px;top:-150px;border-radius:50%;
+  background:rgba(139,92,246,.12);filter:blur(22px);transition:.35s
+}
+.project:hover{transform:translateY(-8px);border-color:rgba(139,92,246,.38)}
+.project:hover:before{transform:translate(-35px,30px)}
+.project-top{display:flex;justify-content:space-between;align-items:center}
+.project-no{font:500 10px "DM Mono",monospace;color:var(--muted-2)}
+.project-year{font:500 10px "DM Mono",monospace;color:#737b8c}
+.project h3{font-size:29px;letter-spacing:-.06em;margin-top:60px}
+.project-role{font:500 10px "DM Mono",monospace;color:#8f98ab;text-transform:uppercase;letter-spacing:.09em;margin-top:7px}
+.project p{font-size:12px;line-height:1.8;color:var(--muted);margin-top:15px;max-width:590px}
+.project .impact{
+  margin-top:20px;padding:14px 15px;border-radius:15px;background:rgba(0,0,0,.16);border:1px solid var(--line);
+}
+.impact strong{font-size:17px;letter-spacing:-.035em}.impact span{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:26px}
+.tag{
+  padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);
+  color:#b8bfcb;font:500 9px "DM Mono",monospace
+}
+@media(max-width:780px){.projects{grid-template-columns:1fr}}
 
-        .hero {
-            background: white;
-            border-radius: 15px;
-            padding: 60px 40px;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+/* Tech matrix */
+.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.tech-box{padding:22px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.022)}
+.tech-box h3{font-size:13px;letter-spacing:-.02em}
+.tech-box p{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.75}
+.tech-box .mini-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.mini-tag{padding:6px 8px;border-radius:8px;background:rgba(255,255,255,.04);font:500 9px "DM Mono",monospace;color:#aeb6c5}
+@media(max-width:800px){.tech-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.tech-grid{grid-template-columns:1fr}}
 
-        .hero h1 {
-            font-size: 48px;
-            color: #667eea;
-            margin-bottom: 10px;
-        }
+/* Education + contact */
+.bottom-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:15px}
+.education,.contact{
+  padding:29px;border:1px solid var(--line);border-radius:25px;background:rgba(255,255,255,.025)
+}
+.education h3{font-size:22px;letter-spacing:-.045em;margin-top:14px}
+.education p{color:var(--muted);font-size:12px;line-height:1.7;margin-top:9px}
+.contact{
+  overflow:hidden;position:relative;
+  background:
+    radial-gradient(circle at 85% 10%,rgba(34,211,238,.11),transparent 31%),
+    radial-gradient(circle at 5% 105%,rgba(139,92,246,.13),transparent 38%),
+    rgba(255,255,255,.025)
+}
+.contact h2{font-size:clamp(40px,5.4vw,68px);line-height:.94;letter-spacing:-.075em;margin-top:14px}
+.contact p{max-width:610px;color:var(--muted);font-size:13px;line-height:1.75;margin-top:17px}
+.contact-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}
+.contact-link{
+  border:1px solid var(--line);background:rgba(0,0,0,.14);padding:10px 12px;border-radius:11px;
+  font:500 10px "DM Mono",monospace;color:#b8bfcb;transition:.25s
+}
+.contact-link:hover{border-color:rgba(139,92,246,.5);color:#fff}
+@media(max-width:780px){.bottom-grid{grid-template-columns:1fr}}
 
-        .hero .subtitle {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 20px;
-        }
+/* Footer */
+footer{margin-top:85px;border-top:1px solid var(--line);padding:34px 0 25px}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.footer-left,.footer-right{font:500 9px "DM Mono",monospace;color:#626a79;letter-spacing:.06em}
+.footer-right{display:flex;gap:16px}
+.footer-right a:hover{color:#fff}
+@media(max-width:640px){.footer-row{align-items:flex-start;flex-direction:column}}
 
-        .hero .bio {
-            font-size: 16px;
-            max-width: 600px;
-            margin: 20px auto;
-            color: #555;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
-
-        .btn-secondary:hover {
-            background: #667eea;
-            color: white;
-        }
-
-        .section {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            font-size: 32px;
-            color: #667eea;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: #f8f9ff;
-            border-radius: 10px;
-            padding: 25px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-
-        .project-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-
-        .project-card .tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .tech-tag {
-            background: #667eea;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9ff;
-            padding: 20px;
-            border-radius: 10px;
-            border-top: 3px solid #667eea;
-        }
-
-        .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 8px 0;
-            color: #555;
-        }
-
-        .skill-category li:before {
-            content: "→ ";
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .social-links a {
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            nav ul {
-                gap: 15px;
-                font-size: 14px;
-            }
-
-            .hero {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+/* Motion */
+.reveal{opacity:0;transform:translateY(20px);animation:show .75s cubic-bezier(.2,.75,.25,1) forwards}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}
+@keyframes show{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.reveal{opacity:1;transform:none;animation:none}
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">SJ</div>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+<div class="progress" id="progress"></div>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="#top" aria-label="Shivanand Kumar Jha home">
+        <span class="logo-mark">SJ</span>
+        <span>Shivanand Kumar Jha</span>
+      </a>
+
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-status"><span class="live-dot"></span> Open to remote & relocation</div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow"><span class="live-dot"></span> Agentic AI Engineer · Fullstack Developer</span>
+
+        <h1>Building software<br><span class="gradient">that can reason.</span></h1>
+
+        <p class="hero-copy">
+          Agentic AI Engineer with <strong>2+ years</strong> shipping production AI applications.
+          Currently building AI-powered sales analytics workflows and agentic pipelines at
+          <strong>Relevate.ai</strong> using OpenAI, Claude Sonnet, React, Node.js, and TypeScript.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:jshivanand3112@gmail.com">Let's talk ↗</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/shivanand-jha24/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-secondary" href="https://github.com/shivanand-jha24" target="_blank" rel="noreferrer">GitHub ↗</a>
         </div>
-    </header>
+      </div>
 
-    <div class="container">
-        <section class="hero" id="about">
-            <h1>Shivanand Jha</h1>
-            <p class="subtitle">Full Stack Developer | React | Node.js | JavaScript</p>
-            <p class="bio">
-                Building performant, scalable web applications with modern technologies.
-                1.5+ years of experience in frontend and backend development.
-                Passionate about clean code, system design, and continuous learning.
-            </p>
-            <div class="cta-buttons">
-                <a href="https://github.com/shivanand-jha" class="btn btn-primary">GitHub</a>
-                <a href="https://linkedin.com/in/shivanand-jha24" class="btn btn-secondary">LinkedIn</a>
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-            </div>
-        </section>
+      <aside class="hero-card reveal d2">
+        <div class="mono">Current focus</div>
+        <div class="card-title">Agentic AI</div>
+        <div class="card-sub">LLMs · workflows · full-stack delivery</div>
 
-        <section class="section" id="projects">
-            <h2>Featured Projects</h2>
-            <div class="projects">
-                <div class="project-card">
-                    <h3>Netflix Clone</h3>
-                    <p>Full-featured streaming application that replicates Netflix's core functionality. Includes real-time search, genre browsing, and trailer integration with YouTube API.</p>
-                    <div class="tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">TMDB API</span>
-                        <span class="tech-tag">Firebase</span>
-                        <span class="tech-tag">Styled Components</span>
-                    </div>
-                </div>
+        <div class="metric-grid">
+          <div class="metric"><strong>50%</strong><span>Load-time reduction</span></div>
+          <div class="metric"><strong>65%</strong><span>Operational efficiency improvement</span></div>
+          <div class="metric"><strong>10K+</strong><span>Patent files processed</span></div>
+          <div class="metric"><strong>1K+</strong><span>Concurrent users</span></div>
+        </div>
 
-                <div class="project-card">
-                    <h3>Contact Management System</h3>
-                    <p>Full-stack CRUD application for managing contacts. Built with Node.js, Express, and MongoDB. Demonstrates backend fundamentals and database integration.</p>
-                    <div class="tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">EJS</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>React Performance Playground</h3>
-                    <p>Advanced React patterns showcase. Includes code splitting, lazy loading, memoization, virtualization with react-window, and Suspense implementation.</p>
-                    <div class="tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Performance</span>
-                        <span class="tech-tag">Web Vitals</span>
-                        <span class="tech-tag">Optimization</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <ul>
-                        <li>React.js</li>
-                        <li>Angular</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>TypeScript</li>
-                        <li>HTML5 & CSS3</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul>
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                        <li>MongoDB</li>
-                        <li>Mongoose</li>
-                        <li>REST APIs</li>
-                        <li>Database Design</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <ul>
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>Postman</li>
-                        <li>Firebase</li>
-                        <li>Webpack</li>
-                        <li>NPM/Yarn</li>
-                    </ul>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Core Competencies</h3>
-                    <ul>
-                        <li>Data Structures & Algorithms</li>
-                        <li>System Design</li>
-                        <li>Problem Solving</li>
-                        <li>Code Quality</li>
-                        <li>Performance Optimization</li>
-                        <li>Debugging & Testing</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <h2>Get In Touch</h2>
-            <p style="text-align: center; margin-bottom: 30px; color: #666;">
-                Always interested in connecting with fellow developers and exploring new opportunities.
-            </p>
-            <div class="cta-buttons">
-                <a href="mailto:jshivanand3112@gmail.com" class="btn btn-primary">Email Me</a>
-                <a href="https://github.com/shivanand-jha24" class="btn btn-secondary">GitHub Profile</a>
-            </div>
-        </section>
+        <div class="location">Delhi, India · +91 62073 95451</div>
+      </aside>
     </div>
+  </section>
 
-    <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/shivanand-jha">GitHub</a>
-                <a href="https://linkedin.com/in/shivanand-jha24">LinkedIn</a>
-                <a href="https://twitter.com/shivanandtwts">Twitter</a>
-            </div>
-            <p>&copy; 2024 Shivanand Jha. All rights reserved.</p>
-            <p style="font-size: 12px; margin-top: 10px;">Built with HTML5, CSS3, and ❤️</p>
+  <section>
+    <div class="container">
+      <div class="capabilities">
+        <div class="capability reveal">
+          <div class="index">01 / AI</div>
+          <h3>Agentic workflows</h3>
+          <p>LLM reasoning steps, tool use, structured outputs, document pipelines, and conversational interfaces.</p>
         </div>
-    </footer>
+        <div class="capability reveal d1">
+          <div class="index">02 / PRODUCT</div>
+          <h3>Production AI</h3>
+          <p>End-to-end ownership from prompt engineering and integration to UI wiring, debugging, testing, and deployment.</p>
+        </div>
+        <div class="capability reveal d2">
+          <div class="index">03 / FULLSTACK</div>
+          <h3>React + Node.js</h3>
+          <p>Scalable frontend workflows, backend services, asynchronous processing, APIs, and real-time systems.</p>
+        </div>
+        <div class="capability reveal d3">
+          <div class="index">04 / CLOUD</div>
+          <h3>Cloud delivery</h3>
+          <p>AWS, GCP, Firebase, serverless APIs, storage, data platforms, and production release workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Experience / 01</div>
+          <h2>Shipping, not just prototyping.</h2>
+        </div>
+        <p class="section-intro">
+          Production engineering across agentic AI, document analysis, frontend architecture,
+          cloud integrations, and enterprise-facing products.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <article class="job reveal">
+          <div class="job-index">2026—NOW</div>
+          <span class="job-dot"></span>
+          <div class="job-card">
+            <div class="job-head">
+              <div>
+                <div class="job-title">Agentic AI Engineer & Fullstack Developer</div>
+                <div class="job-company">Contata Solutions</div>
+              </div>
+              <div class="job-date">DEC 2024 — PRESENT</div>
+            </div>
+
+            <span class="job-subrole">Relevate.ai · Agentic AI Application · Jan 2026 — Present</span>
+
+            <ul>
+              <li>Design and ship agentic AI workflows in a production React + Node.js application, connecting LLM reasoning steps to backend services, document-processing pipelines, and user-facing interfaces.</li>
+              <li>Integrate OpenAI and Claude Sonnet APIs for intelligent document summarisation, multi-document comparison, image analysis, and conversational chatbot features used daily by enterprise users.</li>
+              <li>Architect asynchronous AI pipelines that chain LLM calls, tool use, and structured outputs — reducing manual document-review time and enabling scalable multi-step reasoning over large document sets.</li>
+              <li>Own end-to-end delivery across prompt engineering, API integration, UI wiring, debugging, testing, and production deployment of AI-powered features.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job reveal d1">
+          <div class="job-index">2024—26</div>
+          <span class="job-dot"></span>
+          <div class="job-card">
+            <div class="job-head">
+              <div>
+                <div class="job-title">Agentic AI Engineer & Fullstack Developer</div>
+                <div class="job-company">Contata Solutions</div>
+              </div>
+              <div class="job-date">DEC 2024 — JAN 2026</div>
+            </div>
+
+            <span class="job-subrole">Otto IP · Intellectual Property & Patent Analysis Platform</span>
+
+            <ul>
+              <li>Built and optimised React workflows for a document-analysis platform processing <strong>10,000+ patent files</strong> and serving <strong>1,000+ concurrent users</strong>.</li>
+              <li>Cut average page-load times by <strong>50%</strong> through component-level lazy loading, request caching, and parallel API batching.</li>
+              <li>Developed secure multi-format file-upload and parsing pipelines for PDF, DOCX, XML, PNG, and SVG, with real-time progress tracking and chatbot integration.</li>
+              <li>Wired the React frontend to AWS S3, Lambda, DynamoDB and GCP Cloud Functions, BigQuery, GCS; deployed APIs via Serverless Framework with zero-downtime releases.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job reveal d2">
+          <div class="job-index">2024</div>
+          <span class="job-dot"></span>
+          <div class="job-card">
+            <div class="job-head">
+              <div>
+                <div class="job-title">Frontend Developer</div>
+                <div class="job-company">Contata Solutions</div>
+              </div>
+              <div class="job-date">FEB 2024 — NOV 2024</div>
+            </div>
+
+            <span class="job-subrole">Angular 17 · Skills Management</span>
+
+            <ul>
+              <li>Improved HR tracking efficiency by <strong>65%</strong> through an Angular 17 skills-management application with real-time data visualisation and advanced querying across <strong>1,000+ employee records</strong>.</li>
+              <li>Shipped a reusable Angular Material + PrimeNG component library across 2 Agile teams, achieving zero critical defects at go-live and receiving formal commendations from client stakeholders.</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Selected work / 02</div>
+          <h2>Systems with a purpose.</h2>
+        </div>
+        <p class="section-intro">
+          Product work combining realtime systems, mobile engineering, AI-adjacent workflows,
+          authentication, data synchronization, and full-stack architecture.
+        </p>
+      </div>
+
+      <div class="projects">
+
+        <article class="project reveal">
+          <div class="project-top">
+            <span class="project-no">PROJECT 01</span>
+            <span class="project-year">2025</span>
+          </div>
+          <h3>LiveTrack</h3>
+          <div class="project-role">Real-Time Location Sharing App</div>
+          <p>
+            A React Native location-sharing application streaming live GPS coordinates through
+            a Node.js / Socket.io backend with privacy controls, background tracking, and resilient offline sync.
+          </p>
+          <div class="impact"><strong>&lt; 2 sec</strong><span>GPS streaming latency</span></div>
+          <div class="tags">
+            <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">Socket.io</span>
+            <span class="tag">Node.js</span><span class="tag">Firebase</span><span class="tag">Geofencing</span>
+          </div>
+        </article>
+
+        <article class="project reveal d1">
+          <div class="project-top">
+            <span class="project-no">PROJECT 02</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3>ShopStack</h3>
+          <div class="project-role">Full-Stack E-Commerce Platform</div>
+          <p>
+            A full-stack commerce platform with product catalogue, cart, checkout, admin tooling,
+            realtime inventory synchronisation, and role-based access for buyers, sellers, and administrators.
+          </p>
+          <div class="impact"><strong>10K+</strong><span>SKUs supported</span></div>
+          <div class="tags">
+            <span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express</span>
+            <span class="tag">MongoDB</span><span class="tag">Redux</span><span class="tag">JWT</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="stack">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Engineering stack / 03</div>
+          <h2>Built across the stack.</h2>
+        </div>
+        <p class="section-intro">
+          The tools and patterns used to build production interfaces, backend services,
+          AI workflows, realtime systems, and cloud infrastructure.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+        <div class="tech-box reveal">
+          <h3>AI & Agents</h3>
+          <p>LLM integrations and agent-oriented product workflows.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">OpenAI API</span><span class="mini-tag">Claude Sonnet</span>
+            <span class="mini-tag">Agentic AI</span><span class="mini-tag">Prompt Engineering</span>
+            <span class="mini-tag">Document Analysis</span><span class="mini-tag">LangChain</span>
+          </div>
+        </div>
+
+        <div class="tech-box reveal d1">
+          <h3>Frontend</h3>
+          <p>Production interfaces with performance and accessibility in mind.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">React.js</span><span class="mini-tag">TypeScript</span>
+            <span class="mini-tag">JavaScript ES6+</span><span class="mini-tag">React Native</span>
+            <span class="mini-tag">Angular 17</span><span class="mini-tag">Next.js</span>
+          </div>
+        </div>
+
+        <div class="tech-box reveal d2">
+          <h3>Backend & Realtime</h3>
+          <p>Async services, APIs, authentication, and event-driven communication.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Node.js</span><span class="mini-tag">Express.js</span>
+            <span class="mini-tag">RESTful APIs</span><span class="mini-tag">WebSockets</span>
+            <span class="mini-tag">Socket.io</span><span class="mini-tag">JWT</span>
+          </div>
+        </div>
+
+        <div class="tech-box reveal">
+          <h3>Cloud & Infra</h3>
+          <p>Serverless delivery and managed cloud platforms.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">AWS S3</span><span class="mini-tag">AWS Lambda</span>
+            <span class="mini-tag">DynamoDB</span><span class="mini-tag">GCP</span>
+            <span class="mini-tag">BigQuery</span><span class="mini-tag">GCS</span>
+            <span class="mini-tag">Firebase</span>
+          </div>
+        </div>
+
+        <div class="tech-box reveal d1">
+          <h3>Data</h3>
+          <p>Application and realtime data stores used in production systems.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">MongoDB</span><span class="mini-tag">SQL Server</span>
+            <span class="mini-tag">DynamoDB</span><span class="mini-tag">Firebase Realtime DB</span>
+          </div>
+        </div>
+
+        <div class="tech-box reveal d2">
+          <h3>Engineering</h3>
+          <p>Performance, debugging, collaboration, and delivery practices.</p>
+          <div class="mini-tags">
+            <span class="mini-tag">Lazy Loading</span><span class="mini-tag">Memoisation</span>
+            <span class="mini-tag">Code Splitting</span><span class="mini-tag">Chrome DevTools</span>
+            <span class="mini-tag">Git</span><span class="mini-tag">Postman</span>
+            <span class="mini-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container bottom-grid">
+      <div class="education reveal">
+        <div class="kicker">Education / 04</div>
+        <h3>B.Tech — Computer Science & Engineering</h3>
+        <p>GLA University, Mathura<br>2020 — 2024</p>
+      </div>
+
+      <div class="contact reveal d1" id="contact">
+        <div class="kicker">Let's connect / 05</div>
+        <h2>Build the next<br>intelligent product.</h2>
+        <p>
+          Open to opportunities involving Agentic AI, full-stack engineering,
+          AI-powered products, and production-grade web applications.
+        </p>
+
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:jshivanand3112@gmail.com">jshivanand3112@gmail.com</a>
+          <a class="contact-link" href="tel:+916207395451">+91 62073 95451</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/shivanand-jha24/" target="_blank" rel="noreferrer">LINKEDIN ↗</a>
+          <a class="contact-link" href="https://github.com/shivanand-jha24" target="_blank" rel="noreferrer">GITHUB ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div class="footer-left">SHIVANAND KUMAR JHA · AGENTIC AI ENGINEER</div>
+    <div class="footer-right">
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#work">WORK</a>
+      <a href="#stack">STACK</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const progress = document.getElementById("progress");
+
+  const updateProgress = () => {
+    const scrollTop = window.scrollY;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = height > 0 ? `${(scrollTop / height) * 100}%` : "0%";
+  };
+
+  const updatePointer = (event) => {
+    document.body.style.setProperty("--mx", `${event.clientX}px`);
+    document.body.style.setProperty("--my", `${event.clientY}px`);
+  };
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  window.addEventListener("mousemove", updatePointer, { passive: true });
+  updateProgress();
+})();
+</script>
 </body>
 </html>
